@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "transaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "seller": {
+      "type": "object",
+      "properties": {
+        "sellerId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sellerId"
+      ]
+    },
+    "payment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "checkoutId": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "buyer": {
+      "type": "object",
+      "properties": {
+        "document": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "document",
+        "name"
+      ]
+    },
+    "amount": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "transaction",
+    "seller",
+    "payment",
+    "checkoutId",
+    "amount",
+    "currency",
+    "at",
+    "buyer"
+  ]
+}
