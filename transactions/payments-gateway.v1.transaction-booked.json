@@ -1,20 +1,22 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "https://paymentic.com/schemas/transaction-booked",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
+  "description": "Schema for a payment order object, including details about the payment order.",
   "properties": {
     "paymentOrder": {
       "type": "object",
+      "description": "Contains information about the payment order, including a unique identifier.",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier for the payment order."
         }
       },
-      "required": [
-        "id"
-      ]
+      "required": ["id"],
+      "additionalProperties": false
     }
   },
-  "required": [
-    "paymentOrder"
-  ]
+  "required": ["paymentOrder"],
+  "additionalProperties": false
 }

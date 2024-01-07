@@ -1,0 +1,26 @@
+{
+  "transaction": {
+    "id": "trans12345"
+  },
+  "seller": {
+    "sellerId": "seller98765"
+  },
+  "metadata": {
+    "payment": {
+      "id": "pay12345",
+      "checkout": {
+        "id": "checkout54321"
+      },
+      "buyer": {
+        "document": "doc67890",
+        "name": "John Doe"
+      }
+    },
+    "payout": {
+      "id": "payout12345"
+    }
+  },
+  "amount": "100.00",
+  "currency": "USD",
+  "at": "2024-01-07T10:00:00Z"
+}
