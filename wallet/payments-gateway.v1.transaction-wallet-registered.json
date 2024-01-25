@@ -1,0 +1,121 @@
+{
+  "$id": "http://paymentic.com/cloudevents/jsonschema/wallet/v1/TransactionRegistered.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "description": "Schema for a transaction object, including details about the transaction, seller, metadata, amount, currency, and timestamp.",
+  "properties": {
+    "transaction": {
+      "type": "object",
+      "description": "Contains information about the transaction, including a unique identifier.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the transaction."
+        }
+      },
+      "required": ["id"],
+      "additionalProperties": false
+    },
+    "seller": {
+      "type": "object",
+      "description": "Information about the seller involved in the transaction.",
+      "properties": {
+        "sellerId": {
+          "type": "string",
+          "description": "Unique identifier for the seller."
+        }
+      },
+      "required": ["sellerId"],
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata about the transaction, including payment and payout details.",
+      "properties": {
+        "payment": {
+          "$ref": "#/$defs/payment",
+          "description": "Reference to the payment definition, detailing the payment aspect of the transaction."
+        },
+        "payout": {
+          "$ref": "#/$defs/payout",
+          "description": "Reference to the payout definition, detailing the payout aspect of the transaction."
+        }
+      },
+      "additionalProperties": false
+    },
+    "amount": {
+      "type": "string",
+      "description": "The monetary amount involved in the transaction."
+    },
+    "currency": {
+      "type": "string",
+      "description": "The type of currency used in the transaction."
+    },
+    "at": {
+      "type": "string",
+      "description": "The timestamp of when the transaction took place."
+    }
+  },
+  "required": ["transaction", "seller", "amount", "currency", "at", "metadata"],
+  "$defs": {
+    "buyer": {
+      "type": "object",
+      "description": "Information about the buyer involved in the transaction.",
+      "properties": {
+        "document": {
+          "type": "string",
+          "description": "Document identifier for the buyer."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the buyer."
+        }
+      },
+      "required": ["document", "name"],
+      "additionalProperties": false
+    },
+    "checkout": {
+      "type": "object",
+      "description": "Details about the checkout process in the transaction.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the checkout process."
+        }
+      },
+      "required": ["id"],
+      "additionalProperties": false
+    },
+    "payment": {
+      "type": "object",
+      "description": "Information about the payment part of the transaction.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the payment."
+        },
+        "checkout": {
+          "$ref": "#/$defs/checkout",
+          "description": "Reference to the checkout details associated with the payment."
+        },
+        "buyer": {
+          "$ref": "#/$defs/buyer",
+          "description": "Reference to the buyer details associated with the payment."
+        }
+      },
+      "required": ["id"],
+      "additionalProperties": false
+    },
+    "payout": {
+      "type": "object",
+      "description": "Details about the payout aspect of the transaction.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the payout."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

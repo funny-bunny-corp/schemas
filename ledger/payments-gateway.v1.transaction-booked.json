@@ -1,0 +1,22 @@
+{
+  "$id": "http://paymentic.com/cloudevents/jsonschema/ledger/v1/TransactionBooked.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "description": "Schema for a payment order object, including details about the payment order.",
+  "properties": {
+    "paymentOrder": {
+      "type": "object",
+      "description": "Contains information about the payment order, including a unique identifier.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the payment order."
+        }
+      },
+      "required": ["id"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["paymentOrder"],
+  "additionalProperties": false
+}
