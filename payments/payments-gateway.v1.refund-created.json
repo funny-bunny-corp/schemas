@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://paymentic.com/cloudevents/jsonschema/payments/v1/PaymentCreated.json",
+  "$id": "http://paymentic.com/cloudevents/jsonschema/payments/v1/RefundCreated.json",
   "type": "object",
   "properties": {
-    "checkout": {
+    "refund": {
       "type": "object",
       "properties": {
         "id": {
@@ -50,52 +50,47 @@
         "cardInfo"
       ]
     },
-    "payments": {
-      "type": "array",
-      "items": [
-        {
+    "payment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "idempotenceKey": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "sellerInfo": {
           "type": "object",
           "properties": {
-            "id": {
+            "sellerId": {
               "type": "string"
-            },
-            "amount": {
-              "type": "string"
-            },
-            "currency": {
-              "type": "string"
-            },
-            "idempotenceKey": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string"
-            },
-            "sellerInfo": {
-              "type": "object",
-              "properties": {
-                "sellerId": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "sellerId"
-              ]
             }
           },
           "required": [
-            "id",
-            "amount",
-            "currency",
-            "status",
-            "sellerInfo",
-            "idempotenceKey"
+            "sellerId"
           ]
         }
+      },
+      "required": [
+        "id",
+        "amount",
+        "currency",
+        "status",
+        "sellerInfo",
+        "idempotenceKey"
       ]
     }
   },
-  "required": [
+  "payment": [
     "checkout",
     "payments"
   ]
