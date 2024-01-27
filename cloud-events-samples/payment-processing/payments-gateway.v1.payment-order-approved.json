@@ -1,0 +1,23 @@
+{
+  "transaction": {
+    "id": "4c2cd617-9600-4b8e-bf4c-41cedeb1174a"
+  },
+  "seller": {
+    "sellerId": "f02ee4e8-7047-4393-9cd7-e662948a5dd7"
+  },
+  "payment": {
+    "id": "9b363c11-1811-4b26-ac1d-b3df713a80fe"
+  },
+  "checkoutId": {
+    "id": "173422cc-b4ec-4aeb-ab49-53e3f1773dd0"
+  },
+  "refundId": null,
+  "amount": "181.00",
+  "currency": "RUB",
+  "at": "2024-01-27T08:07:00.020236",
+  "buyer": {
+    "document": "570.278.648-35",
+    "name": "Timothy Flatley"
+  },
+  "status": "APPROVED"
+}

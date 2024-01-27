@@ -1,0 +1,26 @@
+{
+  "refund": {
+    "refund": {
+      "id": "6d4be929-7cb5-4c40-9937-8ddf27fc724e",
+      "idempotenceKey": "cd540e03-44d1-4754-be36-1544dce4d278",
+      "buyerInfo": {
+        "document": "570.278.648-35",
+        "name": "Miriam Bergstrom"
+      },
+      "cardInfo": {
+        "cardInfo": "72777489",
+        "token": "ce3e5ca0-f720-466f-baeb-c2eaf84c1037"
+      }
+    },
+    "payment": {
+      "id": "766ce98a-c82e-4845-ad97-556eb40e5c71",
+      "amount": "181.00",
+      "currency": "MOP",
+      "status": "NOT_STARTED",
+      "sellerInfo": {
+        "sellerId": "f02ee4e8-7047-4393-9cd7-e662948a5dd7"
+      },
+      "idempotencyKey": "5e14d7d3ae52242d01dba2a5127d205e"
+    }
+  }
+}
