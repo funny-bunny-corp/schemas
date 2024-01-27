@@ -1,5 +1,5 @@
 {
-  "$id": "http://paymentic.com/cloudevents/jsonschema/wallet/v1/TransactionRegistered.json",
+  "$id": "http://paymentic.io/cloudevents/jsonschema/merchant-account-management/v1/TransactionRegistered.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "description": "Schema for a transaction object, including details about the transaction, seller, metadata, amount, currency, and timestamp.",

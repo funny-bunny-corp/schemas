@@ -1,0 +1,26 @@
+{
+  "checkout": {
+    "id": "173422cc-b4ec-4aeb-ab49-53e3f1773dd0",
+    "buyerInfo": {
+      "document": "570.278.648-35",
+      "name": "Timothy Flatley"
+    },
+    "cardInfo": {
+      "cardInfo": "67222942",
+      "token": "0e3b69b3-aed5-4e92-ace1-713ed4ad4133"
+    },
+    "idempotencyKey": "e6c7f032-76aa-44e2-b9a3-2681297a26e0"
+  },
+  "payments": [
+    {
+      "id": "9b363c11-1811-4b26-ac1d-b3df713a80fe",
+      "amount": "181.00",
+      "currency": "RUB",
+      "status": "NOT_STARTED",
+      "sellerInfo": {
+        "sellerId": "f02ee4e8-7047-4393-9cd7-e662948a5dd7"
+      },
+      "idempotencyKey": "66ebb0833f79854491ed33fba73ccfad"
+    }
+  ]
+}
