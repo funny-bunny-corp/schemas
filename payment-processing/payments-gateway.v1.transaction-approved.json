@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://paymentic.io/cloudevents/jsonschema/payment-processing/v1/PaymentOrderApproved.json",
+  "$id": "http://paymentic.io/cloudevents/jsonschema/payment-processing/v1/TransactionApproved.json",
   "type": "object",
   "properties": {
     "transaction": {
@@ -47,6 +47,17 @@
         "id"
       ]
     },
+    "refundId": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
     "buyer": {
       "type": "object",
       "properties": {
@@ -79,7 +90,6 @@
     "transaction",
     "seller",
     "payment",
-    "checkoutId",
     "amount",
     "currency",
     "at",
