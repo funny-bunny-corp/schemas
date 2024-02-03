@@ -5,6 +5,23 @@
   "properties": {
     "id": {
       "type": "string"
+    },
+    "amount": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "sellerInfo": {
+      "type": "object",
+      "properties": {
+        "sellerId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sellerId"
+      ]
     }
   },
   "required": [
