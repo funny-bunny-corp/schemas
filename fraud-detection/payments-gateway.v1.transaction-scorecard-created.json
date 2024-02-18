@@ -1,0 +1,71 @@
+{
+  "$id": "http://paymentic.io/cloudevents/jsonschema/fraud-detection/v1/TransactionScoreCardCreated.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TransactionScoreCard",
+  "type": "object",
+  "properties": {
+    "transaction": {
+      "$ref": "#/definitions/Transaction"
+    },
+    "value_score": {
+      "$ref": "#/definitions/ValueScoreCard"
+    },
+    "seller_score": {
+      "$ref": "#/definitions/SellerScoreCard"
+    },
+    "average_value_score": {
+      "$ref": "#/definitions/AverageValueScoreCard"
+    },
+    "currency_score": {
+      "$ref": "#/definitions/CurrencyScoreCard"
+    }
+  },
+  "required": ["transaction", "value_score", "seller_score", "average_value_score", "currency_score"],
+  "definitions": {
+    "Transaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": ["id"]
+    },
+    "ValueScoreCard": {
+      "type": "object",
+      "properties": {
+        "score": {
+          "type": "integer"
+        }
+      },
+      "required": ["score"]
+    },
+    "SellerScoreCard": {
+      "type": "object",
+      "properties": {
+        "score": {
+          "type": "integer"
+        }
+      },
+      "required": ["score"]
+    },
+    "AverageValueScoreCard": {
+      "type": "object",
+      "properties": {
+        "score": {
+          "type": "integer"
+        }
+      },
+      "required": ["score"]
+    },
+    "CurrencyScoreCard": {
+      "type": "object",
+      "properties": {
+        "score": {
+          "type": "integer"
+        }
+      },
+      "required": ["score"]
+    }
+  }
+}
