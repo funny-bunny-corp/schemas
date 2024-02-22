@@ -12,6 +12,9 @@
         "idempotenceKey": {
           "type": "string"
         },
+        "at": {
+          "type": "string"
+        },
         "buyerInfo": {
           "type": "object",
           "properties": {
@@ -47,7 +50,8 @@
         "id",
         "idempotenceKey",
         "buyerInfo",
-        "cardInfo"
+        "cardInfo",
+        "at"
       ]
     },
     "payment": {
