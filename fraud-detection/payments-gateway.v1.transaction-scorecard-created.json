@@ -1,5 +1,5 @@
 {
-  "$id": "http://paymentic.io/cloudevents/jsonschema/fraud-detection/v1/TransactionScoreCardCreated.json",
+  "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/fraud-detection/v1/TransactionScoreCardCreated.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "TransactionScoreCard",
   "type": "object",

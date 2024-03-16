@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://paymentic.io/cloudevents/jsonschema/payment-processing/v1/RefundCreated.json",
+  "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/payment-processing/v1/RefundCreated.json",
   "type": "object",
   "properties": {
     "refund": {

@@ -1,5 +1,5 @@
 {
-  "$id": "http://paymentic.io/cloudevents/jsonschema/financial-recording-reporting/v1/TransactionBooked.json",
+  "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/financial-recording-reporting/v1/TransactionBooked.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "description": "Schema for a payment order object, including details about the payment order.",
