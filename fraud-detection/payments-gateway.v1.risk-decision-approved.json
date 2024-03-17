@@ -1,18 +1,39 @@
 {
-  "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/fraud-detection/v1/TransactionScoreCardCreated.json",
+  "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/fraud-detection/v1/RiskDecisionApproved.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "TransactionScoreCard",
+  "title": "RiskDecisionApproved",
   "type": "object",
   "properties": {
     "transaction": {
       "$ref": "#/definitions/Transaction"
     },
-    "score": {
-      "$ref": "#/definitions/Score"
+    "status":{
+      "type": "string"
+    },
+    "at":{
+      "type": "string"
+    },
+    "level": {
+      "$ref": "#/definitions/Level"
     }
   },
-  "required": ["transaction", "score"],
+  "required": ["transaction", "status", "at", "level"],
   "definitions": {
+    "Level": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "from": {
+          "type": "number"
+        },
+        "to": {
+          "type": "number"
+        }
+      },
+      "required": ["name", "from", "to"]
+    },
     "Transaction": {
       "type": "object",
       "properties": {
