@@ -2,7 +2,7 @@
   "tableName": "checkout_payments",
   "tableType": "REALTIME",
   "segmentsConfig": {
-    "schemaName": "checkout_payments_schema",
+    "schemaName": "checkout_payments",
     "timeColumnName": "event_time",
     "timeType": "MILLISECONDS",
     "replicasPerPartition": "1"

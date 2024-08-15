@@ -1,5 +1,5 @@
 {
-  "schemaName": "checkout_payments_schema",
+  "schemaName": "checkout_payments",
   "dimensionFieldSpecs": [
     {
       "name": "checkout_id",
