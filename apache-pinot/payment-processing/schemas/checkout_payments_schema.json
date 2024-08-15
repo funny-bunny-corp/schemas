@@ -1,0 +1,63 @@
+{
+  "schemaName": "checkout_payments_schema",
+  "dimensionFieldSpecs": [
+    {
+      "name": "checkout_id",
+      "dataType": "STRING"
+    },
+    {
+      "name": "buyer_document",
+      "dataType": "STRING"
+    },
+    {
+      "name": "buyer_name",
+      "dataType": "STRING"
+    },
+    {
+      "name": "card_info",
+      "dataType": "STRING"
+    },
+    {
+      "name": "card_token",
+      "dataType": "STRING"
+    },
+    {
+      "name": "checkout_idempotency_key",
+      "dataType": "STRING"
+    },
+    {
+      "name": "payment_id",
+      "dataType": "STRING"
+    },
+    {
+      "name": "payment_currency",
+      "dataType": "STRING"
+    },
+    {
+      "name": "payment_status",
+      "dataType": "STRING"
+    },
+    {
+      "name": "seller_id",
+      "dataType": "STRING"
+    },
+    {
+      "name": "payment_idempotency_key",
+      "dataType": "STRING"
+    }
+  ],
+  "metricFieldSpecs": [
+    {
+      "name": "payment_amount",
+      "dataType": "DOUBLE"
+    }
+  ],
+  "dateTimeFieldSpecs": [
+    {
+      "name": "event_time",
+      "dataType": "LONG",
+      "format": "1:MILLISECONDS:EPOCH",
+      "granularity": "1:MILLISECONDS"
+    }
+  ]
+}

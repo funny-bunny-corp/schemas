@@ -1,0 +1,36 @@
+{
+  "tableName": "checkout_payments",
+  "tableType": "REALTIME",
+  "segmentsConfig": {
+    "schemaName": "checkout_payments_schema",
+    "timeColumnName": "event_time",
+    "timeType": "MILLISECONDS",
+    "replicasPerPartition": "1"
+  },
+  "tenants": {},
+  "tableIndexConfig": {
+    "loadMode": "MMAP",
+    "streamConfigs": {
+      "streamType": "kafka",
+      "stream.kafka.consumer.type": "lowLevel",
+      "stream.kafka.topic.name": "payment-processing",
+      "stream.kafka.decoder.class.name":
+      "org.apache.pinot.plugin.stream.kafka.KafkaJSONMessageDecoder",
+      "stream.kafka.consumer.factory.class.name":
+      "org.apache.pinot.plugin.stream.kafka20.KafkaConsumerFactory",
+      "stream.kafka.broker.list": "kafka:9092",
+      "stream.kafka.consumer.prop.auto.offset.reset": "smallest"
+    }
+  },
+  "ingestionConfig": {
+    "transformConfigs": [
+      {
+        "columnName": "event_time",
+        "transformFunction":
+        "FromDateTime(createdAt, 'yyyy-MM-dd''T''HH:mm:ss.SSSSSS')"
+      }
+    ]
+  },
+  "metadata": {"customConfigs": {}},
+  "routing": {"instanceSelectorType": "strictReplicaGroup"}
+}
