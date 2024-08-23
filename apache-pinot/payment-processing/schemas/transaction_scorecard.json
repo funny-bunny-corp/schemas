@@ -1,0 +1,71 @@
+{
+  "schemaName": "transaction_score_card",
+  "dimensionFieldSpecs": [
+    {
+      "name": "transaction_order_id",
+      "dataType": "STRING"
+    },
+    {
+      "name": "buyer_document",
+      "dataType": "STRING"
+    },
+    {
+      "name": "buyer_name",
+      "dataType": "STRING"
+    },
+    {
+      "name": "seller_id",
+      "dataType": "STRING"
+    },
+    {
+      "name": "payment_id",
+      "dataType": "STRING"
+    },
+    {
+      "name": "payment_amount",
+      "dataType": "STRING"
+    },
+    {
+      "name": "payment_currency",
+      "dataType": "STRING"
+    },
+    {
+      "name": "payment_status",
+      "dataType": "STRING"
+    },
+    {
+      "name": "card_info",
+      "dataType": "STRING"
+    },
+    {
+      "name": "card_token",
+      "dataType": "STRING"
+    }
+  ],
+  "metricFieldSpecs": [
+    {
+      "name": "value_score",
+      "dataType": "DOUBLE"
+    },
+    {
+      "name": "seller_score",
+      "dataType": "DOUBLE"
+    },
+    {
+      "name": "average_value_score",
+      "dataType": "DOUBLE"
+    },
+    {
+      "name": "currency_score",
+      "dataType": "DOUBLE"
+    }
+  ],
+  "dateTimeFieldSpecs": [
+    {
+      "name": "order_timestamp",
+      "dataType": "LONG",
+      "format": "1:MILLISECONDS:EPOCH",
+      "granularity": "1:MILLISECONDS"
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
-  "tableName": "checkout_payments",
+  "tableName": "risk_decision_approved",
   "tableType": "REALTIME",
   "segmentsConfig": {
-    "timeColumnName": "event_time",
+    "timeColumnName": "event_timestamp",
     "timeType": "MILLISECONDS",
-    "schemaName": "checkout_payments",
+    "schemaName": "risk_decision_approved",
     "replicasPerPartition": "1"
   },
   "tenants": {},
@@ -30,62 +30,70 @@
           "realtime.segment.flush.threshold.time": "3600000",
           "stream.kafka.consumer.factory.class.name": "org.apache.pinot.plugin.stream.kafka20.KafkaConsumerFactory",
           "stream.kafka.consumer.prop.auto.offset.reset": "smallest",
-          "stream.kafka.topic.name": "funny-bunny.xyz.payment-processing.v1.payment.created-sink"
+          "stream.kafka.topic.name": "funny-bunny.xyz.risk-management.v1.risk.decision.approved-sink"
         }
       ]
     },
     "transformConfigs": [
       {
-        "columnName": "checkout_id",
-        "transformFunction": "jsonPathString(checkout, '$.id')"
+        "columnName": "transaction_order_id",
+        "transformFunction": "jsonPathString(transaction, '$.order.id')"
       },
       {
         "columnName": "buyer_document",
-        "transformFunction": "jsonPathString(checkout, '$.buyerInfo.document')"
+        "transformFunction": "jsonPathString(transaction, '$.participants.buyer.document')"
       },
       {
         "columnName": "buyer_name",
-        "transformFunction": "jsonPathString(checkout, '$.buyerInfo.name')"
-      },
-      {
-        "columnName": "card_info",
-        "transformFunction": "jsonPathString(checkout, '$.cardInfo.cardInfo')"
-      },
-      {
-        "columnName": "card_token",
-        "transformFunction": "jsonPathString(checkout, '$.cardInfo.token')"
-      },
-      {
-        "columnName": "checkout_idempotency_key",
-        "transformFunction": "jsonPathString(checkout, '$.idempotencyKey')"
-      },
-      {
-        "columnName": "payment_id",
-        "transformFunction": "jsonPathString(payment, '$.id')"
-      },
-      {
-        "columnName": "payment_amount",
-        "transformFunction": "jsonPathDouble(payment, '$.amount')"
-      },
-      {
-        "columnName": "payment_currency",
-        "transformFunction": "jsonPathString(payment, '$.currency')"
-      },
-      {
-        "columnName": "payment_status",
-        "transformFunction": "jsonPathString(payment, '$.status')"
+        "transformFunction": "jsonPathString(transaction, '$.participants.buyer.name')"
       },
       {
         "columnName": "seller_id",
-        "transformFunction": "jsonPathString(payment, '$.sellerInfo.sellerId')"
+        "transformFunction": "jsonPathString(transaction, '$.participants.seller.id')"
       },
       {
-        "columnName": "payment_idempotency_key",
-        "transformFunction": "jsonPathString(payment, '$.idempotencyKey')"
+        "columnName": "payment_id",
+        "transformFunction": "jsonPathString(transaction, '$.payment.id')"
       },
       {
-        "columnName": "event_time",
-        "transformFunction": "jsonPathLong(checkout, '$.at')"
+        "columnName": "payment_amount",
+        "transformFunction": "jsonPathString(transaction, '$.payment.amount')"
+      },
+      {
+        "columnName": "payment_currency",
+        "transformFunction": "jsonPathString(transaction, '$.payment.currency')"
+      },
+      {
+        "columnName": "payment_status",
+        "transformFunction": "jsonPathString(transaction, '$.payment.status')"
+      },
+      {
+        "columnName": "card_info",
+        "transformFunction": "jsonPathString(transaction, '$.order.payment_type.card_info')"
+      },
+      {
+        "columnName": "card_token",
+        "transformFunction": "jsonPathString(transaction, '$.order.payment_type.token')"
+      },
+      {
+        "columnName": "status_decision",
+        "transformFunction": "jsonPathString(status, '$')"
+      },
+      {
+        "columnName": "event_timestamp",
+        "transformFunction": "jsonPathLong(at, '$')"
+      },
+      {
+        "columnName": "level_name",
+        "transformFunction": "jsonPathString(level, '$.name')"
+      },
+      {
+        "columnName": "level_from",
+        "transformFunction": "jsonPathDouble(level, '$.from')"
+      },
+      {
+        "columnName": "level_to",
+        "transformFunction": "jsonPathDouble(level, '$.to')"
       }
     ],
     "continueOnError": true,

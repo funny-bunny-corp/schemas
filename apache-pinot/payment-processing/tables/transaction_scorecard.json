@@ -1,0 +1,104 @@
+{
+  "tableName": "transaction_score_card",
+  "tableType": "REALTIME",
+  "segmentsConfig": {
+    "timeColumnName": "order_timestamp",
+    "timeType": "MILLISECONDS",
+    "schemaName": "transaction_score_card",
+    "replicasPerPartition": "1"
+  },
+  "tenants": {},
+  "tableIndexConfig": {
+    "loadMode": "MMAP"
+  },
+  "metadata": {
+    "customConfigs": {}
+  },
+  "ingestionConfig": {
+    "streamIngestionConfig": {
+      "streamConfigMaps": [
+        {
+          "realtime.segment.flush.threshold.rows": "0",
+          "stream.kafka.decoder.prop.format": "JSON",
+          "key.serializer": "org.apache.kafka.common.serialization.ByteArraySerializer",
+          "stream.kafka.decoder.class.name": "org.apache.pinot.plugin.stream.kafka.KafkaJSONMessageDecoder",
+          "streamType": "kafka",
+          "value.serializer": "org.apache.kafka.common.serialization.ByteArraySerializer",
+          "stream.kafka.consumer.type": "LOWLEVEL",
+          "realtime.segment.flush.threshold.segment.rows": "50000",
+          "stream.kafka.broker.list": "kafka:29092",
+          "realtime.segment.flush.threshold.time": "3600000",
+          "stream.kafka.consumer.factory.class.name": "org.apache.pinot.plugin.stream.kafka20.KafkaConsumerFactory",
+          "stream.kafka.consumer.prop.auto.offset.reset": "smallest",
+          "stream.kafka.topic.name": "funny-bunny.xyz.fraud-detection.v1.transaction.scorecard.created-sink"
+        }
+      ]
+    },
+    "transformConfigs": [
+      {
+        "columnName": "transaction_order_id",
+        "transformFunction": "jsonPathString(transaction, '$.order.id')"
+      },
+      {
+        "columnName": "buyer_document",
+        "transformFunction": "jsonPathString(transaction, '$.participants.buyer.document')"
+      },
+      {
+        "columnName": "buyer_name",
+        "transformFunction": "jsonPathString(transaction, '$.participants.buyer.name')"
+      },
+      {
+        "columnName": "seller_id",
+        "transformFunction": "jsonPathString(transaction, '$.participants.seller.id')"
+      },
+      {
+        "columnName": "payment_id",
+        "transformFunction": "jsonPathString(transaction, '$.payment.id')"
+      },
+      {
+        "columnName": "payment_amount",
+        "transformFunction": "jsonPathDouble(transaction, '$.payment.amount')"
+      },
+      {
+        "columnName": "payment_currency",
+        "transformFunction": "jsonPathString(transaction, '$.payment.currency')"
+      },
+      {
+        "columnName": "payment_status",
+        "transformFunction": "jsonPathString(transaction, '$.payment.status')"
+      },
+      {
+        "columnName": "card_info",
+        "transformFunction": "jsonPathString(transaction, '$.order.payment_type.card_info')"
+      },
+      {
+        "columnName": "card_token",
+        "transformFunction": "jsonPathString(transaction, '$.order.payment_type.token')"
+      },
+      {
+        "columnName": "order_timestamp",
+        "transformFunction": "jsonPathLong(transaction, '$.order.at')"
+      },
+      {
+        "columnName": "value_score",
+        "transformFunction": "jsonPathDouble(score, '$.value_score.score')"
+      },
+      {
+        "columnName": "seller_score",
+        "transformFunction": "jsonPathDouble(score, '$.seller_score.score')"
+      },
+      {
+        "columnName": "average_value_score",
+        "transformFunction": "jsonPathDouble(score, '$.average_value_score.score')"
+      },
+      {
+        "columnName": "currency_score",
+        "transformFunction": "jsonPathDouble(score, '$.currency_score.score')"
+      }
+    ],
+    "continueOnError": true,
+    "rowTimeValueCheck": true,
+    "segmentTimeValueCheck": false
+  },
+  "isDimTable": false
+}
