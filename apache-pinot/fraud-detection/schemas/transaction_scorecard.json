@@ -1,8 +1,8 @@
 {
-  "schemaName": "checkout_payments",
+  "schemaName": "fraud_detection_transaction_score_card",
   "dimensionFieldSpecs": [
     {
-      "name": "checkout_id",
+      "name": "transaction_order_id",
       "dataType": "STRING"
     },
     {
@@ -14,19 +14,15 @@
       "dataType": "STRING"
     },
     {
-      "name": "card_info",
-      "dataType": "STRING"
-    },
-    {
-      "name": "card_token",
-      "dataType": "STRING"
-    },
-    {
-      "name": "checkout_idempotency_key",
+      "name": "seller_id",
       "dataType": "STRING"
     },
     {
       "name": "payment_id",
+      "dataType": "STRING"
+    },
+    {
+      "name": "payment_amount",
       "dataType": "STRING"
     },
     {
@@ -38,23 +34,35 @@
       "dataType": "STRING"
     },
     {
-      "name": "seller_id",
+      "name": "card_info",
       "dataType": "STRING"
     },
     {
-      "name": "payment_idempotency_key",
+      "name": "card_token",
       "dataType": "STRING"
     }
   ],
   "metricFieldSpecs": [
     {
-      "name": "payment_amount",
+      "name": "value_score",
+      "dataType": "DOUBLE"
+    },
+    {
+      "name": "seller_score",
+      "dataType": "DOUBLE"
+    },
+    {
+      "name": "average_value_score",
+      "dataType": "DOUBLE"
+    },
+    {
+      "name": "currency_score",
       "dataType": "DOUBLE"
     }
   ],
   "dateTimeFieldSpecs": [
     {
-      "name": "event_time",
+      "name": "order_timestamp",
       "dataType": "LONG",
       "format": "1:MILLISECONDS:EPOCH",
       "granularity": "1:MILLISECONDS"

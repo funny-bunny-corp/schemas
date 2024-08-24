@@ -1,16 +1,8 @@
 {
-  "schemaName": "risk_decision_rejected",
+  "schemaName": "merchant_account_transaction_registered",
   "dimensionFieldSpecs": [
     {
-      "name": "transaction_order_id",
-      "dataType": "STRING"
-    },
-    {
-      "name": "buyer_document",
-      "dataType": "STRING"
-    },
-    {
-      "name": "buyer_name",
+      "name": "transaction_id",
       "dataType": "STRING"
     },
     {
@@ -22,41 +14,29 @@
       "dataType": "STRING"
     },
     {
-      "name": "payment_currency",
+      "name": "payout_id",
       "dataType": "STRING"
     },
     {
-      "name": "payment_status",
+      "name": "checkout_id",
       "dataType": "STRING"
     },
     {
-      "name": "card_info",
+      "name": "buyer_document",
       "dataType": "STRING"
     },
     {
-      "name": "card_token",
+      "name": "buyer_name",
       "dataType": "STRING"
     },
     {
-      "name": "status_decision",
+      "name": "transaction_currency",
       "dataType": "STRING"
-    },
-    {
-      "name": "level_name",
-      "dataType": "STRING"
-    },
-    {
-      "name": "level_from",
-      "dataType": "DOUBLE"
-    },
-    {
-      "name": "level_to",
-      "dataType": "DOUBLE"
     }
   ],
   "metricFieldSpecs": [
     {
-      "name": "payment_amount",
+      "name": "transaction_amount",
       "dataType": "DOUBLE"
     }
   ],

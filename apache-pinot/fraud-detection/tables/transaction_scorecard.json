@@ -1,10 +1,10 @@
 {
-  "tableName": "transaction_score_card",
+  "tableName": "fraud_detection_transaction_score_card",
   "tableType": "REALTIME",
   "segmentsConfig": {
     "timeColumnName": "order_timestamp",
     "timeType": "MILLISECONDS",
-    "schemaName": "transaction_score_card",
+    "schemaName": "fraud_detection_transaction_score_card",
     "replicasPerPartition": "1"
   },
   "tenants": {},

@@ -1,10 +1,10 @@
 {
-  "tableName": "checkout_payments",
+  "tableName": "payment_processing_checkout_payments",
   "tableType": "REALTIME",
   "segmentsConfig": {
     "timeColumnName": "event_time",
     "timeType": "MILLISECONDS",
-    "schemaName": "checkout_payments",
+    "schemaName": "payment_processing_checkout_payments",
     "replicasPerPartition": "1"
   },
   "tenants": {},

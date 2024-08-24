@@ -1,0 +1,88 @@
+{
+  "tableName": "payment_processing_transaction_declined",
+  "tableType": "REALTIME",
+  "segmentsConfig": {
+    "timeColumnName": "event_timestamp",
+    "timeType": "MILLISECONDS",
+    "schemaName": "payment_processing_transaction_declined",
+    "replicasPerPartition": "1"
+  },
+  "tenants": {},
+  "tableIndexConfig": {
+    "loadMode": "MMAP"
+  },
+  "metadata": {
+    "customConfigs": {}
+  },
+  "ingestionConfig": {
+    "streamIngestionConfig": {
+      "streamConfigMaps": [
+        {
+          "realtime.segment.flush.threshold.rows": "0",
+          "stream.kafka.decoder.prop.format": "JSON",
+          "key.serializer": "org.apache.kafka.common.serialization.ByteArraySerializer",
+          "stream.kafka.decoder.class.name": "org.apache.pinot.plugin.stream.kafka.KafkaJSONMessageDecoder",
+          "streamType": "kafka",
+          "value.serializer": "org.apache.kafka.common.serialization.ByteArraySerializer",
+          "stream.kafka.consumer.type": "LOWLEVEL",
+          "realtime.segment.flush.threshold.segment.rows": "50000",
+          "stream.kafka.broker.list": "kafka:29092",
+          "realtime.segment.flush.threshold.time": "3600000",
+          "stream.kafka.consumer.factory.class.name": "org.apache.pinot.plugin.stream.kafka20.KafkaConsumerFactory",
+          "stream.kafka.consumer.prop.auto.offset.reset": "smallest",
+          "stream.kafka.topic.name": "funny-bunny.xyz.payment-processing.v1.payment-order.declined-sink"
+        }
+      ]
+    },
+    "transformConfigs": [
+      {
+        "columnName": "transaction_id",
+        "transformFunction": "jsonPathString(transaction, '$.id')"
+      },
+      {
+        "columnName": "seller_id",
+        "transformFunction": "jsonPathString(seller, '$.sellerId')"
+      },
+      {
+        "columnName": "payment_id",
+        "transformFunction": "jsonPathString(payment, '$.id')"
+      },
+      {
+        "columnName": "checkout_id",
+        "transformFunction": "jsonPathString(checkoutId, '$.id')"
+      },
+      {
+        "columnName": "refund_id",
+        "transformFunction": "jsonPathString(refundId, '$.id')"
+      },
+      {
+        "columnName": "buyer_document",
+        "transformFunction": "jsonPathString(buyer, '$.document')"
+      },
+      {
+        "columnName": "buyer_name",
+        "transformFunction": "jsonPathString(buyer, '$.name')"
+      },
+      {
+        "columnName": "transaction_amount",
+        "transformFunction": "jsonPathDouble(amount, '$')"
+      },
+      {
+        "columnName": "transaction_currency",
+        "transformFunction": "jsonPathString(currency, '$')"
+      },
+      {
+        "columnName": "transaction_status",
+        "transformFunction": "jsonPathString(status, '$')"
+      },
+      {
+        "columnName": "event_timestamp",
+        "transformFunction": "jsonPathLong(at, '$')"
+      }
+    ],
+    "continueOnError": true,
+    "rowTimeValueCheck": true,
+    "segmentTimeValueCheck": false
+  },
+  "isDimTable": false
+}

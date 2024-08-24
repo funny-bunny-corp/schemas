@@ -1,5 +1,5 @@
 {
-  "schemaName": "transaction_score_card",
+  "schemaName": "fraud_detection_risk_decision_approved",
   "dimensionFieldSpecs": [
     {
       "name": "transaction_order_id",
@@ -22,10 +22,6 @@
       "dataType": "STRING"
     },
     {
-      "name": "payment_amount",
-      "dataType": "STRING"
-    },
-    {
       "name": "payment_currency",
       "dataType": "STRING"
     },
@@ -40,29 +36,33 @@
     {
       "name": "card_token",
       "dataType": "STRING"
+    },
+    {
+      "name": "status_decision",
+      "dataType": "STRING"
+    },
+    {
+      "name": "level_name",
+      "dataType": "STRING"
+    },
+    {
+      "name": "level_from",
+      "dataType": "DOUBLE"
+    },
+    {
+      "name": "level_to",
+      "dataType": "DOUBLE"
     }
   ],
   "metricFieldSpecs": [
     {
-      "name": "value_score",
-      "dataType": "DOUBLE"
-    },
-    {
-      "name": "seller_score",
-      "dataType": "DOUBLE"
-    },
-    {
-      "name": "average_value_score",
-      "dataType": "DOUBLE"
-    },
-    {
-      "name": "currency_score",
+      "name": "payment_amount",
       "dataType": "DOUBLE"
     }
   ],
   "dateTimeFieldSpecs": [
     {
-      "name": "order_timestamp",
+      "name": "event_timestamp",
       "dataType": "LONG",
       "format": "1:MILLISECONDS:EPOCH",
       "granularity": "1:MILLISECONDS"

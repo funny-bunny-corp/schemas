@@ -1,10 +1,10 @@
 {
-  "tableName": "risk_decision_approved",
+  "tableName": "fraud_detection_risk_decision_approved",
   "tableType": "REALTIME",
   "segmentsConfig": {
     "timeColumnName": "event_timestamp",
     "timeType": "MILLISECONDS",
-    "schemaName": "risk_decision_approved",
+    "schemaName": "fraud_detection_risk_decision_approved",
     "replicasPerPartition": "1"
   },
   "tenants": {},
