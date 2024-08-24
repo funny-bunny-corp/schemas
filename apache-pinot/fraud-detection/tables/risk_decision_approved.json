@@ -49,7 +49,7 @@
       },
       {
         "columnName": "seller_id",
-        "transformFunction": "jsonPathString(transaction, '$.participants.seller.id')"
+        "transformFunction": "jsonPathString(transaction, '$.participants.seller.sellerId')"
       },
       {
         "columnName": "payment_id",
@@ -69,11 +69,11 @@
       },
       {
         "columnName": "card_info",
-        "transformFunction": "jsonPathString(transaction, '$.order.payment_type.card_info')"
+        "transformFunction": "jsonPathString(transaction, '$.order.paymentType.cardInfo')"
       },
       {
         "columnName": "card_token",
-        "transformFunction": "jsonPathString(transaction, '$.order.payment_type.token')"
+        "transformFunction": "jsonPathString(transaction, '$.order.paymentType.token')"
       },
       {
         "columnName": "status_decision",

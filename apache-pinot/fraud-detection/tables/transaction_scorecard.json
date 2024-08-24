@@ -49,7 +49,7 @@
       },
       {
         "columnName": "seller_id",
-        "transformFunction": "jsonPathString(transaction, '$.participants.seller.id')"
+        "transformFunction": "jsonPathString(transaction, '$.participants.seller.sellerId')"
       },
       {
         "columnName": "payment_id",
@@ -69,11 +69,11 @@
       },
       {
         "columnName": "card_info",
-        "transformFunction": "jsonPathString(transaction, '$.order.payment_type.card_info')"
+        "transformFunction": "jsonPathString(transaction, '$.order.paymentType.cardInfo')"
       },
       {
         "columnName": "card_token",
-        "transformFunction": "jsonPathString(transaction, '$.order.payment_type.token')"
+        "transformFunction": "jsonPathString(transaction, '$.order.paymentType.token')"
       },
       {
         "columnName": "order_timestamp",
@@ -81,19 +81,19 @@
       },
       {
         "columnName": "value_score",
-        "transformFunction": "jsonPathDouble(score, '$.value_score.score')"
+        "transformFunction": "jsonPathDouble(score, '$.valueScore.score')"
       },
       {
         "columnName": "seller_score",
-        "transformFunction": "jsonPathDouble(score, '$.seller_score.score')"
+        "transformFunction": "jsonPathDouble(score, '$.sellerScore.score')"
       },
       {
         "columnName": "average_value_score",
-        "transformFunction": "jsonPathDouble(score, '$.average_value_score.score')"
+        "transformFunction": "jsonPathDouble(score, '$.averageValueScore.score')"
       },
       {
         "columnName": "currency_score",
-        "transformFunction": "jsonPathDouble(score, '$.currency_score.score')"
+        "transformFunction": "jsonPathDouble(score, '$.currencyScore.score')"
       }
     ],
     "continueOnError": true,
