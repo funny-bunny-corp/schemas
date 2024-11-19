@@ -13,9 +13,13 @@
       "required": [
         "id"
       ]
+    },
+    "at": {
+      "type": "string"
     }
   },
   "required": [
-    "checkout"
+    "checkout",
+    "at"
   ]
 }
