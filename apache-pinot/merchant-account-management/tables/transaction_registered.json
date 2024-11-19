@@ -45,23 +45,23 @@
       },
       {
         "columnName": "payment_id",
-        "transformFunction": "jsonPathString(metadata.payment, '$.id')"
+        "transformFunction": "jsonPathString(payment, '$.id')"
       },
       {
         "columnName": "payout_id",
-        "transformFunction": "jsonPathString(metadata.payout, '$.id')"
+        "transformFunction": "jsonPathString(payout, '$.id')"
       },
       {
         "columnName": "checkout_id",
-        "transformFunction": "jsonPathString(metadata.payment.checkout, '$.id')"
+        "transformFunction": "jsonPathString(checkout, '$.id')"
       },
       {
         "columnName": "buyer_document",
-        "transformFunction": "jsonPathString(metadata.payment.buyer, '$.document')"
+        "transformFunction": "jsonPathString(buyer, '$.document')"
       },
       {
         "columnName": "buyer_name",
-        "transformFunction": "jsonPathString(metadata.payment.buyer, '$.name')"
+        "transformFunction": "jsonPathString(buyer, '$.name')"
       },
       {
         "columnName": "transaction_amount",

@@ -15,8 +15,11 @@
       },
       "required": ["id"],
       "additionalProperties": false
+    },
+    "at": {
+      "type": "string"
     }
   },
-  "required": ["paymentOrder"],
+  "required": ["paymentOrder", "at"],
   "additionalProperties": false
 }
