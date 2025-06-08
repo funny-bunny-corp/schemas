@@ -1,0 +1,25 @@
+{
+  "transaction": {
+    "id": "123e4567-e89b-12d3-a456-426614174000"
+  },
+  "seller": {
+    "sellerId": "123e4567-e89b-12d3-a456-426614174001"
+  },
+  "payment": {
+    "id": "123e4567-e89b-12d3-a456-426614174002"
+  },
+  "checkoutId": {
+    "id": "123e4567-e89b-12d3-a456-426614174003"
+  },
+  "refundId": {
+    "id": "123e4567-e89b-12d3-a456-426614174004"
+  },
+  "buyer": {
+    "document": "123.456.789-00",
+    "name": "John Doe"
+  },
+  "amount": "1250.00",
+  "currency": "USD",
+  "at": "2024-03-15T14:30:00Z",
+  "status": "APPROVED"
+} 

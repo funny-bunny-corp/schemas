@@ -2,9 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/payment-processing/v1/RefundStarted.json",
   "type": "object",
+  "title": "Refund Started Event Schema",
+  "description": "Schema for events triggered when a refund process begins",
   "properties": {
     "id": {
-      "type": "string"
+      "type": "string",
+      "description": "Unique identifier for the refund request",
+      "format": "uuid"
     }
   },
   "required": [

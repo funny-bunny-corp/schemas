@@ -1,0 +1,41 @@
+{
+  "transaction": {
+    "participants": {
+      "buyer": {
+        "document": "123.456.789-00",
+        "name": "John Doe"
+      },
+      "seller": {
+        "id": "123e4567-e89b-12d3-a456-426614174000"
+      }
+    },
+    "order": {
+      "id": "123e4567-e89b-12d3-a456-426614174001",
+      "payment_type": {
+        "card_info": "************1234",
+        "token": "123e4567-e89b-12d3-a456-426614174002"
+      },
+      "at": "2024-03-15T14:30:00Z"
+    },
+    "payment": {
+      "id": "123e4567-e89b-12d3-a456-426614174003",
+      "amount": "1250.00",
+      "currency": "USD",
+      "status": "PENDING"
+    }
+  },
+  "score": {
+    "value_score": {
+      "score": 75
+    },
+    "seller_score": {
+      "score": 90
+    },
+    "average_value_score": {
+      "score": 85
+    },
+    "currency_score": {
+      "score": 95
+    }
+  }
+} 

@@ -1,0 +1,16 @@
+{
+  "paymentOrder": {
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "amount": "1250.00",
+    "currency": "USD",
+    "type": "PAYMENT",
+    "status": "BOOKED",
+    "accountingCode": "REV2024"
+  },
+  "at": "2024-03-15T14:30:00Z",
+  "metadata": {
+    "bookingReference": "BK2024030045",
+    "fiscalYear": "2024",
+    "fiscalPeriod": "Q1"
+  }
+} 

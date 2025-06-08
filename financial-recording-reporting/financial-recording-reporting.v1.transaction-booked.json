@@ -1,0 +1,84 @@
+{
+  "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/financial-recording-reporting/v1/TransactionBooked.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Transaction Booked Event Schema",
+  "description": "Schema for events triggered when a financial transaction is successfully recorded in the accounting system",
+  "properties": {
+    "paymentOrder": {
+      "type": "object",
+      "description": "Information about the payment order that has been booked in the accounting system",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the payment order",
+          "format": "uuid"
+        },
+        "amount": {
+          "type": "string",
+          "description": "Payment order amount in decimal format (e.g., '100.00')",
+          "pattern": "^\\d+\\.\\d{2}$"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Three-letter ISO currency code",
+          "pattern": "^[A-Z]{3}$",
+          "examples": ["USD", "EUR", "BRL"]
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of financial transaction",
+          "enum": ["PAYMENT", "REFUND", "CHARGEBACK", "FEE", "ADJUSTMENT"],
+          "examples": ["PAYMENT"]
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of the booking",
+          "enum": ["BOOKED", "PENDING_RECONCILIATION"],
+          "examples": ["BOOKED"]
+        },
+        "accountingCode": {
+          "type": "string",
+          "description": "Internal accounting code for transaction categorization",
+          "pattern": "^[A-Z0-9]{4,10}$",
+          "examples": ["REV2024", "FEE2024"]
+        }
+      },
+      "required": ["id", "amount", "currency", "type", "status", "accountingCode"],
+      "additionalProperties": false
+    },
+    "at": {
+      "type": "string",
+      "description": "Timestamp when the transaction was booked in the accounting system",
+      "format": "date-time"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional contextual information about the booking",
+      "properties": {
+        "bookingReference": {
+          "type": "string",
+          "description": "Reference number in the accounting system",
+          "pattern": "^BK[0-9]{10}$",
+          "examples": ["BK2024030001"]
+        },
+        "fiscalYear": {
+          "type": "string",
+          "description": "Fiscal year for the transaction",
+          "pattern": "^[0-9]{4}$",
+          "examples": ["2024"]
+        },
+        "fiscalPeriod": {
+          "type": "string",
+          "description": "Fiscal period within the year",
+          "pattern": "^(Q[1-4]|M(0[1-9]|1[0-2]))$",
+          "examples": ["Q1", "M03"]
+        }
+      },
+      "required": ["bookingReference", "fiscalYear", "fiscalPeriod"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["paymentOrder", "at", "metadata"],
+  "additionalProperties": false
+} 

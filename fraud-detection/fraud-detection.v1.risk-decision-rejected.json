@@ -1,183 +1,257 @@
 {
   "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/fraud-detection/v1/RiskDecisionRejected.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "RiskDecisionRejected",
+  "title": "Risk Decision Rejected Event Schema",
+  "description": "Schema for events triggered when a transaction fails fraud risk assessment",
   "type": "object",
   "properties": {
     "transaction": {
-      "$ref": "#/definitions/Transaction"
+      "$ref": "#/definitions/Transaction",
+      "description": "Details of the transaction that was assessed"
     },
-    "status":{
-      "type": "string"
+    "status": {
+      "type": "string",
+      "description": "Final status of the risk assessment",
+      "enum": ["REJECTED"],
+      "examples": ["REJECTED"]
     },
-    "at":{
-      "type": "string"
+    "at": {
+      "type": "string",
+      "description": "Timestamp when the risk assessment was completed",
+      "format": "date-time"
     },
     "level": {
-      "$ref": "#/definitions/Level"
+      "$ref": "#/definitions/Level",
+      "description": "Risk level assessment details"
     }
   },
   "required": ["transaction", "status", "at", "level"],
   "definitions": {
     "Level": {
       "type": "object",
+      "description": "Risk level classification parameters",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the risk level category",
+          "enum": ["LOW", "MEDIUM", "HIGH"],
+          "examples": ["HIGH"]
         },
         "from": {
-          "type": "number"
+          "type": "number",
+          "description": "Lower bound of the risk score range",
+          "minimum": 0,
+          "maximum": 100
         },
         "to": {
-          "type": "number"
+          "type": "number",
+          "description": "Upper bound of the risk score range",
+          "minimum": 0,
+          "maximum": 100
         }
       },
       "required": ["name", "from", "to"]
     },
     "Transaction": {
       "type": "object",
+      "description": "Comprehensive transaction information",
       "properties": {
         "participants": {
-          "$ref": "#/definitions/Participants"
+          "$ref": "#/definitions/Participants",
+          "description": "Parties involved in the transaction"
         },
         "order": {
-          "$ref": "#/definitions/Order"
+          "$ref": "#/definitions/Order",
+          "description": "Order details associated with the transaction"
         },
         "payment": {
-          "$ref": "#/definitions/Payment"
+          "$ref": "#/definitions/Payment",
+          "description": "Payment information for the transaction"
         }
       },
       "required": ["participants", "order", "payment"]
     },
     "Buyer": {
       "type": "object",
+      "description": "Information about the buyer/customer",
       "properties": {
         "document": {
-          "type": "string"
+          "type": "string",
+          "description": "Buyer's identification document (e.g., CPF, passport)",
+          "pattern": "^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}$"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "Full name of the buyer",
+          "minLength": 1
         }
       },
-      "required": ["id"]
+      "required": ["document", "name"]
     },
     "Seller": {
       "type": "object",
+      "description": "Information about the merchant",
       "properties": {
         "id": {
-          "seller_id": "string"
+          "type": "string",
+          "description": "Unique identifier of the seller/merchant",
+          "format": "uuid"
         }
       },
       "required": ["id"]
     },
     "Participants": {
       "type": "object",
+      "description": "Information about all parties involved in the transaction",
       "properties": {
         "buyer": {
-          "$ref": "#/definitions/Buyer"
+          "$ref": "#/definitions/Buyer",
+          "description": "Details of the buyer"
         },
         "seller": {
-          "$ref": "#/definitions/Seller"
+          "$ref": "#/definitions/Seller",
+          "description": "Details of the seller"
         }
       },
-      "required": ["id"]
+      "required": ["buyer", "seller"]
     },
     "PaymentType": {
       "type": "object",
+      "description": "Payment method details",
       "properties": {
         "card_info": {
-          "type": "string"
+          "type": "string",
+          "description": "Masked or truncated card number for reference"
         },
         "token": {
-          "type": "string"
+          "type": "string",
+          "description": "Secure token representing the payment method",
+          "format": "uuid"
         }
       },
-      "required": ["id"]
+      "required": ["card_info", "token"]
     },
     "Order": {
       "type": "object",
+      "description": "Details of the purchase order",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier for the order",
+          "format": "uuid"
         },
         "payment_type": {
-          "$ref": "#/definitions/PaymentType"
+          "$ref": "#/definitions/PaymentType",
+          "description": "Payment method used for the order"
         },
         "at": {
-          "type": "string"
+          "type": "string",
+          "description": "Timestamp when the order was created",
+          "format": "date-time"
         }
       },
       "required": ["id", "payment_type", "at"]
     },
     "Payment": {
       "type": "object",
+      "description": "Payment transaction details",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier for the payment",
+          "format": "uuid"
         },
         "amount": {
-          "type": "string"
+          "type": "string",
+          "description": "Payment amount in decimal format (e.g., '100.00')",
+          "pattern": "^\\d+\\.\\d{2}$"
         },
         "currency": {
-          "type": "string"
+          "type": "string",
+          "description": "Three-letter ISO currency code",
+          "pattern": "^[A-Z]{3}$",
+          "examples": ["USD", "EUR", "BRL"]
         },
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Current status of the payment",
+          "enum": ["PENDING", "PROCESSING", "COMPLETED", "FAILED"],
+          "examples": ["PENDING"]
         }
       },
-      "required": ["id","amount", "currency", "status"]
+      "required": ["id", "amount", "currency", "status"]
     },
-
     "Score": {
       "type": "object",
+      "description": "Comprehensive risk scoring details",
       "properties": {
         "value_score": {
-          "$ref": "#/definitions/ValueScoreCard"
+          "$ref": "#/definitions/ValueScoreCard",
+          "description": "Risk score based on transaction value"
         },
         "seller_score": {
-          "$ref": "#/definitions/SellerScoreCard"
+          "$ref": "#/definitions/SellerScoreCard",
+          "description": "Risk score based on seller history"
         },
         "average_value_score": {
-          "$ref": "#/definitions/AverageValueScoreCard"
+          "$ref": "#/definitions/AverageValueScoreCard",
+          "description": "Risk score based on comparison with average transaction values"
         },
         "currency_score": {
-          "$ref": "#/definitions/CurrencyScoreCard"
+          "$ref": "#/definitions/CurrencyScoreCard",
+          "description": "Risk score based on currency used"
         }
       },
       "required": ["value_score", "seller_score", "average_value_score", "currency_score"]
     },
     "ValueScoreCard": {
       "type": "object",
+      "description": "Score card for transaction value assessment",
       "properties": {
         "score": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Risk score for the transaction value (0-100)",
+          "minimum": 0,
+          "maximum": 100
         }
       },
       "required": ["score"]
     },
     "SellerScoreCard": {
       "type": "object",
+      "description": "Score card for seller risk assessment",
       "properties": {
         "score": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Risk score for the seller (0-100)",
+          "minimum": 0,
+          "maximum": 100
         }
       },
       "required": ["score"]
     },
     "AverageValueScoreCard": {
       "type": "object",
+      "description": "Score card for transaction value comparison",
       "properties": {
         "score": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Risk score based on average transaction value comparison (0-100)",
+          "minimum": 0,
+          "maximum": 100
         }
       },
       "required": ["score"]
     },
     "CurrencyScoreCard": {
       "type": "object",
+      "description": "Score card for currency risk assessment",
       "properties": {
         "score": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Risk score for the currency used (0-100)",
+          "minimum": 0,
+          "maximum": 100
         }
       },
       "required": ["score"]

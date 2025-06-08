@@ -2,21 +2,33 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/payment-processing/v1/PaymentOrderStarted.json",
   "type": "object",
+  "title": "Payment Order Started Event Schema",
+  "description": "Schema for events triggered when a new payment order processing begins",
   "properties": {
     "id": {
-      "type": "string"
+      "type": "string",
+      "description": "Unique identifier for the payment order",
+      "format": "uuid"
     },
     "amount": {
-      "type": "string"
+      "type": "string",
+      "description": "Payment order amount in decimal format (e.g., '100.00')",
+      "pattern": "^\\d+\\.\\d{2}$"
     },
     "currency": {
-      "type": "string"
+      "type": "string",
+      "description": "Three-letter ISO currency code",
+      "pattern": "^[A-Z]{3}$",
+      "examples": ["USD", "EUR", "BRL"]
     },
     "sellerInfo": {
       "type": "object",
+      "description": "Information about the merchant receiving the payment",
       "properties": {
         "sellerId": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier of the seller/merchant",
+          "format": "uuid"
         }
       },
       "required": [
@@ -25,6 +37,9 @@
     }
   },
   "required": [
-    "id"
+    "id",
+    "amount",
+    "currency",
+    "sellerInfo"
   ]
 }

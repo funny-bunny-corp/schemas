@@ -2,24 +2,36 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/payment-processing/v1/RefundCreated.json",
   "type": "object",
+  "title": "Refund Created Event Schema",
+  "description": "Schema for events triggered when a new refund request is created in the system",
   "properties": {
     "refund": {
       "type": "object",
+      "description": "Information about the refund request",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier for the refund request",
+          "format": "uuid"
         },
         "idempotenceKey": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique key to ensure idempotent processing of the refund request",
+          "format": "uuid"
         },
         "buyerInfo": {
           "type": "object",
+          "description": "Information about the buyer requesting the refund",
           "properties": {
             "document": {
-              "type": "string"
+              "type": "string",
+              "description": "Buyer's identification document (e.g., CPF, passport)",
+              "pattern": "^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}$"
             },
             "name": {
-              "type": "string"
+              "type": "string",
+              "description": "Full name of the buyer",
+              "minLength": 1
             }
           },
           "required": [
@@ -29,12 +41,16 @@
         },
         "cardInfo": {
           "type": "object",
+          "description": "Original payment card information for the refund",
           "properties": {
             "cardInfo": {
-              "type": "string"
+              "type": "string",
+              "description": "Masked or truncated card number for reference"
             },
             "token": {
-              "type": "string"
+              "type": "string",
+              "description": "Secure token representing the original payment card",
+              "format": "uuid"
             }
           },
           "required": [
@@ -52,27 +68,43 @@
     },
     "payment": {
       "type": "object",
+      "description": "Details of the original payment transaction being refunded",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier of the original payment transaction",
+          "format": "uuid"
         },
         "amount": {
-          "type": "string"
+          "type": "string",
+          "description": "Amount to be refunded in decimal format (e.g., '100.00')",
+          "pattern": "^\\d+\\.\\d{2}$"
         },
         "currency": {
-          "type": "string"
+          "type": "string",
+          "description": "Three-letter ISO currency code of the refund",
+          "pattern": "^[A-Z]{3}$",
+          "examples": ["USD", "EUR", "BRL"]
         },
         "idempotenceKey": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique key to ensure idempotent processing of the refund payment",
+          "format": "uuid"
         },
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "Current status of the refund",
+          "enum": ["PENDING", "PROCESSING", "COMPLETED", "FAILED"],
+          "examples": ["PENDING"]
         },
         "sellerInfo": {
           "type": "object",
+          "description": "Information about the merchant processing the refund",
           "properties": {
             "sellerId": {
-              "type": "string"
+              "type": "string",
+              "description": "Unique identifier of the seller/merchant",
+              "format": "uuid"
             }
           },
           "required": [
@@ -90,8 +122,8 @@
       ]
     }
   },
-  "payment": [
-    "checkout",
-    "payments"
+  "required": [
+    "refund",
+    "payment"
   ]
 }

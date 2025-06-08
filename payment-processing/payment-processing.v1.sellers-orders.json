@@ -2,12 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/payment-processing/v1/SellerRequestPaymentsDataProduct.json",
   "type": "object",
+  "title": "Seller Requested Payments Data Product Schema",
+  "description": "Schema for events containing aggregated payment data requested by a seller",
   "properties": {
     "seller": {
       "type": "object",
+      "description": "Information about the seller requesting payment data",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier of the seller/merchant",
+          "format": "uuid"
         }
       },
       "required": [
@@ -16,14 +21,25 @@
     },
     "amount": {
       "type": "object",
+      "description": "Aggregated payment amount information",
       "properties": {
         "currency": {
-          "type": "string"
+          "type": "string",
+          "description": "Three-letter ISO currency code",
+          "pattern": "^[A-Z]{3}$",
+          "examples": ["USD", "EUR", "BRL"]
         },
         "value": {
-          "type": "number"
+          "type": "number",
+          "description": "Total payment amount as a decimal number",
+          "minimum": 0,
+          "examples": [100.00, 1250.50]
         }
-      }
+      },
+      "required": [
+        "currency",
+        "value"
+      ]
     }
   },
   "required": [

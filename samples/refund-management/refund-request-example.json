@@ -1,0 +1,12 @@
+{
+  "amount": "1250.00",
+  "currency": "USD",
+  "payment_id": "123e4567-e89b-12d3-a456-426614174000",
+  "reason": "PRODUCT_NOT_RECEIVED",
+  "metadata": {
+    "request_id": "123e4567-e89b-12d3-a456-426614174001",
+    "requested_at": "2024-03-15T14:30:00Z",
+    "requester_id": "123e4567-e89b-12d3-a456-426614174002",
+    "notes": "Customer reported package not delivered after 30 days"
+  }
+} 

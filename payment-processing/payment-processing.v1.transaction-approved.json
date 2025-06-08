@@ -2,12 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/payment-processing/v1/TransactionApproved.json",
   "type": "object",
+  "title": "Transaction Approved Event Schema",
+  "description": "Schema for events triggered when a payment transaction is approved by the payment processor",
   "properties": {
     "transaction": {
       "type": "object",
+      "description": "Information about the approved transaction",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier for the transaction",
+          "format": "uuid"
         }
       },
       "required": [
@@ -16,9 +21,12 @@
     },
     "seller": {
       "type": "object",
+      "description": "Information about the merchant receiving the payment",
       "properties": {
         "sellerId": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier of the seller/merchant",
+          "format": "uuid"
         }
       },
       "required": [
@@ -27,9 +35,12 @@
     },
     "payment": {
       "type": "object",
+      "description": "Reference to the original payment request",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier of the payment request",
+          "format": "uuid"
         }
       },
       "required": [
@@ -38,9 +49,12 @@
     },
     "checkoutId": {
       "type": "object",
+      "description": "Reference to the checkout session that initiated this payment",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier of the checkout session",
+          "format": "uuid"
         }
       },
       "required": [
@@ -49,9 +63,12 @@
     },
     "refundId": {
       "type": "object",
+      "description": "Reference to any associated refund request (if applicable)",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier of the refund request",
+          "format": "uuid"
         }
       },
       "required": [
@@ -60,12 +77,17 @@
     },
     "buyer": {
       "type": "object",
+      "description": "Information about the buyer/customer making the payment",
       "properties": {
         "document": {
-          "type": "string"
+          "type": "string",
+          "description": "Buyer's identification document (e.g., CPF, passport)",
+          "pattern": "^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}$"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "Full name of the buyer",
+          "minLength": 1
         }
       },
       "required": [
@@ -74,16 +96,26 @@
       ]
     },
     "amount": {
-      "type": "string"
+      "type": "string",
+      "description": "Transaction amount in decimal format (e.g., '100.00')",
+      "pattern": "^\\d+\\.\\d{2}$"
     },
     "currency": {
-      "type": "string"
+      "type": "string",
+      "description": "Three-letter ISO currency code",
+      "pattern": "^[A-Z]{3}$",
+      "examples": ["USD", "EUR", "BRL"]
     },
     "at": {
-      "type": "string"
+      "type": "string",
+      "description": "Timestamp when the transaction was approved",
+      "format": "date-time"
     },
     "status": {
-      "type": "string"
+      "type": "string",
+      "description": "Final status of the approved transaction",
+      "enum": ["APPROVED"],
+      "examples": ["APPROVED"]
     }
   },
   "required": [

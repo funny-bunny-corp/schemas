@@ -2,24 +2,75 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/refund-management/v1/RefundRequest.json",
   "type": "object",
+  "title": "Refund Request Event Schema",
+  "description": "Schema for events triggered when a refund request is initiated in the system. This schema defines the structure for handling refund requests, including validation of amounts, currencies, and reasons.",
   "properties": {
     "amount": {
-      "type": "string"
+      "type": "string",
+      "description": "The amount to be refunded in decimal format. Must match the original payment amount or be less for partial refunds.",
+      "pattern": "^\\d+\\.\\d{2}$",
+      "examples": ["100.00", "50.50", "1250.00"]
     },
     "currency": {
-      "type": "string"
+      "type": "string",
+      "description": "Three-letter ISO currency code for the refund. Must match the currency of the original payment.",
+      "pattern": "^[A-Z]{3}$",
+      "examples": ["USD", "EUR", "BRL"]
     },
     "payment_id": {
-      "type": "string"
+      "type": "string",
+      "description": "Unique identifier of the original payment transaction that is being refunded.",
+      "format": "uuid"
     },
     "reason": {
-      "type": "string"
+      "type": "string",
+      "description": "The reason for requesting the refund. Helps in tracking and analyzing refund patterns.",
+      "enum": [
+        "CUSTOMER_REQUEST",
+        "PRODUCT_NOT_RECEIVED",
+        "PRODUCT_DEFECTIVE",
+        "DUPLICATE_CHARGE",
+        "FRAUDULENT_CHARGE",
+        "SERVICE_NOT_PROVIDED",
+        "INCORRECT_AMOUNT",
+        "OTHER"
+      ],
+      "examples": ["CUSTOMER_REQUEST", "PRODUCT_NOT_RECEIVED"]
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional contextual information about the refund request",
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "description": "Unique identifier for this refund request",
+          "format": "uuid"
+        },
+        "requested_at": {
+          "type": "string",
+          "description": "Timestamp when the refund was requested",
+          "format": "date-time"
+        },
+        "requester_id": {
+          "type": "string",
+          "description": "Identifier of the user or system requesting the refund",
+          "format": "uuid"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional notes or comments about the refund request",
+          "maxLength": 500
+        }
+      },
+      "required": ["request_id", "requested_at", "requester_id"]
     }
   },
   "required": [
     "amount",
     "reason",
     "currency",
-    "payment_id"
-  ]
+    "payment_id",
+    "metadata"
+  ],
+  "additionalProperties": false
 }

@@ -2,12 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/payment-processing/v1/PaymentDone.json",
   "type": "object",
+  "title": "Payment Done Event Schema",
+  "description": "Schema for events triggered when a payment process is completed, regardless of its final status",
   "properties": {
     "checkout": {
       "type": "object",
+      "description": "Reference to the checkout session that initiated this payment",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique identifier of the checkout session",
+          "format": "uuid"
         }
       },
       "required": [
@@ -15,7 +20,9 @@
       ]
     },
     "at": {
-      "type": "string"
+      "type": "string",
+      "description": "Timestamp when the payment process was completed",
+      "format": "date-time"
     }
   },
   "required": [

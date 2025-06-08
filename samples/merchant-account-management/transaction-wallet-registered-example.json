@@ -1,0 +1,29 @@
+{
+  "transaction": {
+    "id": "123e4567-e89b-12d3-a456-426614174000"
+  },
+  "seller": {
+    "sellerId": "123e4567-e89b-12d3-a456-426614174001"
+  },
+  "metadata": {
+    "payment": {
+      "id": "123e4567-e89b-12d3-a456-426614174002",
+      "checkout": {
+        "id": "123e4567-e89b-12d3-a456-426614174003"
+      },
+      "buyer": {
+        "document": "123.456.789-00",
+        "name": "John Doe"
+      },
+      "status": "COMPLETED"
+    },
+    "payout": {
+      "id": "123e4567-e89b-12d3-a456-426614174004",
+      "scheduled_date": "2024-03-20",
+      "status": "SCHEDULED"
+    }
+  },
+  "amount": "1250.00",
+  "currency": "USD",
+  "at": "2024-03-15T14:30:00Z"
+} 

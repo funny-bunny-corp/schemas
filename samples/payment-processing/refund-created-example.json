@@ -1,0 +1,24 @@
+{
+  "refund": {
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "idempotenceKey": "123e4567-e89b-12d3-a456-426614174001",
+    "buyerInfo": {
+      "document": "123.456.789-00",
+      "name": "John Doe"
+    },
+    "cardInfo": {
+      "cardInfo": "************1234",
+      "token": "123e4567-e89b-12d3-a456-426614174002"
+    }
+  },
+  "payment": {
+    "id": "123e4567-e89b-12d3-a456-426614174003",
+    "amount": "1250.00",
+    "currency": "USD",
+    "idempotenceKey": "123e4567-e89b-12d3-a456-426614174004",
+    "status": "PENDING",
+    "sellerInfo": {
+      "sellerId": "123e4567-e89b-12d3-a456-426614174005"
+    }
+  }
+} 
