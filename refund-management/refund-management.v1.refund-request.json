@@ -3,7 +3,7 @@
   "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/refund-management/v1/RefundRequest.json",
   "type": "object",
   "title": "Refund Request Event Schema",
-  "description": "Schema for events triggered when a refund request is initiated in the system. This schema defines the structure for handling refund requests, including validation of amounts, currencies, and reasons.",
+  "description": "Schema for events triggered when a refund request is initiated in the system. This schema defines the structure for handling refund requests, including validation of amounts, currencies, and reasons. The refund request must reference an existing payment and can be either full or partial. All refund requests require proper justification and are subject to business rules validation.",
   "properties": {
     "amount": {
       "type": "string",

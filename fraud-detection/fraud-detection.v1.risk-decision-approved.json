@@ -2,7 +2,7 @@
   "$id": "http://funny-bunny.xyz/cloudevents/jsonschema/fraud-detection/v1/RiskDecisionApproved.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Risk Decision Approved Event Schema",
-  "description": "Schema for events triggered when a transaction passes fraud risk assessment",
+  "description": "Schema for events triggered when a transaction successfully passes fraud risk assessment. This event indicates that the transaction has been analyzed by the fraud detection system and deemed safe for processing. The event includes comprehensive scoring details and risk level categorization.",
   "type": "object",
   "properties": {
     "transaction": {
